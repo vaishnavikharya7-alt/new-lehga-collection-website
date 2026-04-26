@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Lehga Collection — Premium Bridal Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config={theme:{extend:{fontFamily:{sans:['Inter'],display:['Cormorant Garamond','serif']}}}}
+    </script>
+    <style>
+        body{font-family:'Inter',sans-serif;background:#faf8f5;color:#1a1a1a}
+        .fd{font-family:'Cormorant Garamond',serif}
+        @keyframes heroReveal{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+        .hr{animation:heroReveal 1.2s cubic-bezier(.16,1,.3,1) both}
+        .hr1{animation-delay:.2s}.hr2{animation-delay:.4s}.hr3{animation-delay:.6s}.hr4{animation-delay:.8s}.hr5{animation-delay:1s}
+        @keyframes imgZoom{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+        .himg{animation:imgZoom 2s cubic-bezier(.16,1,.3,1) both;animation-delay:.3s}
+        .rv{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}
+        .rv.on{opacity:1;transform:translateY(0)}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .mq{animation:marquee 30s linear infinite}
+        .ldraw{width:0;height:1px;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+        .ldraw.on{width:60px}
+        .ihover{overflow:hidden}
+        .ihover img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+        .ihover:hover img{transform:scale(1.06)}
+        .srow{border-bottom:1px solid rgba(255,255,255,.08);transition:all .4s}
+        .srow:hover{padding-left:24px;background:rgba(255,255,255,.03)}
+        .srow:hover .snum{color:#b8860b}
+        .srow:hover .sarr{transform:translateX(0) rotate(-45deg);opacity:1}
+        .sarr{transform:translateX(-10px) rotate(-45deg);opacity:0;transition:all .4s}
+        .snum{transition:color .4s}
+        .ncard{transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .ncard:hover{transform:translateY(-6px);border-color:#b8860b}
+        .ncard:hover .nicon{background:#1a1a1a;color:#d4a843}
+        .tst{animation:tIn .4s cubic-bezier(.16,1,.3,1),tOut .4s ease-in 2.6s forwards}
+        @keyframes tIn{from{opacity:0;transform:translateY(-20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+        @keyframes tOut{to{opacity:0;transform:translateY(-20px) scale(.95)}}
+        .mm{clip-path:circle(0% at calc(100% - 40px) 40px);transition:clip-path .6s cubic-bezier(.4,0,.2,1)}
+        .mm.show{clip-path:circle(150% at calc(100% - 40px) 40px)}
+        .finput{border-bottom:1px solid #e8e4df;transition:border-color .3s}
+        .finput:focus{border-bottom-color:#1a1a1a}
+        .grain::after{content:'';position:fixed;inset:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+        /* Pricing */
+        .price-card{transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .price-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -15px rgba(0,0,0,.08)}
+        .price-card.featured{border-color:#b8860b;background:#1a1a1a;color:white}
+        .price-card.featured .price-label{color:#b8860b}
+
+        /* FAQ */
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),padding .3s}
+        .faq-answer.open{max-height:300px}
+        .faq-icon{transition:transform .3s}
+        .faq-item.open .faq-icon{transform:rotate(45deg)}
+
+        /* Video play btn */
+        .play-btn{transition:all .4s}
+        .play-btn:hover{transform:scale(1.1);box-shadow:0 0 0 20px rgba(184,134,11,.15)}
+
+        /* Map */
+        .map-wrap{transition:all .5s}
+        .map-wrap:hover{box-shadow:0 20px 60px -15px rgba(0,0,0,.15)}
+    </style>
+</head>
+<body class="grain">
+
+<div id="tb" class="fixed top-5 left-1/2 -translate-x-1/2 z-[999] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+<!-- NAV -->
+<nav id="nv" class="fixed top-0 left-0 right-0 z-[500] transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex items-center justify-between h-20">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-[#1a1a1a] flex items-center justify-center">
+                    <span class="text-[#1a1a1a] font-bold text-sm fd">NL</span>
+                </div>
+                <div class="hidden sm:block">
+                    <div class="text-[14px] font-semibold text-[#1a1a1a] fd tracking-wide">New Lehga Collection</div>
+                    <div class="text-[9px] text-[#999] tracking-[.2em] uppercase font-medium">Bridal Studio</div>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#work" class="text-[12px] text-[#666] hover:text-[#1a1a1a] transition font-medium tracking-wider uppercase">Work</a>
+                <a href="#services" class="text-[12px] text-[#666] hover:text-[#1a1a1a] transition font-medium tracking-wider uppercase">Services</a>
+                <a href="#pricing" class="text-[12px] text-[#666] hover:text-[#1a1a1a] transition font-medium tracking-wider uppercase">Pricing</a>
+                <a href="#about" class="text-[12px] text-[#666] hover:text-[#1a1a1a] transition font-medium tracking-wider uppercase">About</a>
+                <a href="#faq" class="text-[12px] text-[#666] hover:text-[#1a1a1a] transition font-medium tracking-wider uppercase">FAQ</a>
+                <a href="#contact" class="text-[12px] bg-[#1a1a1a] text-[#faf8f5] px-7 py-2.5 rounded-full font-medium tracking-wider uppercase hover:bg-[#333] transition">Book Now</a>
+            </div>
+            <button onclick="mm()" class="lg:hidden text-[#1a1a1a]"><i data-lucide="menu" class="w-6 h-6"></i></button>
+        </div>
+    </div>
+</nav>
+
+<!-- MOBILE -->
+<div id="mp" class="mm fixed inset-0 z-[550] bg-[#faf8f5] flex flex-col">
+    <div class="flex justify-end p-6"><button onclick="mm()" class="text-[#1a1a1a]"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+    <div class="flex-1 flex flex-col items-center justify-center gap-7 -mt-10">
+        <a href="#work" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">Work</a>
+        <a href="#services" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">Services</a>
+        <a href="#pricing" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">Pricing</a>
+        <a href="#about" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">About</a>
+        <a href="#faq" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">FAQ</a>
+        <a href="#contact" onclick="mm()" class="text-5xl fd font-medium text-[#1a1a1a]">Contact</a>
+    </div>
+    <div class="p-6 text-center text-xs text-[#999] tracking-wider">9935860926 · 8953229006</div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-[#f0ebe3]">
+    <div class="absolute inset-0 flex">
+        <div class="w-1/2 himg ihover"><img src="https://picsum.photos/seed/nlc-hero-left-pro/1000/1400.jpg" alt="" class="w-full h-full object-cover"></div>
+        <div class="w-1/2 himg ihover hidden sm:block" style="animation-delay:.5s"><img src="https://picsum.photos/seed/nlc-hero-right-pro/1000/1400.jpg" alt="" class="w-full h-full object-cover"></div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#faf8f5]/95 via-[#faf8f5]/70 to-transparent sm:to-[#faf8f5]/30"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 w-full pt-28 pb-20">
+        <div class="max-w-xl">
+            <div class="hr flex items-center gap-4 mb-8">
+                <div class="ldraw on h-px bg-[#b8860b]"></div>
+                <span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Premium Bridal Studio</span>
+            </div>
+            <h1 class="hr hr1 text-[clamp(3.2rem,7vw,6.5rem)] fd font-medium text-[#1a1a1a] leading-[.88] tracking-tight mb-8">
+                Your Dream<br><em class="text-[#b8860b]">Bridal</em> Look
+            </h1>
+            <p class="hr hr2 text-[#666] text-lg leading-relaxed mb-10 max-w-md font-light">
+                Designer lehenga, professional makeup & complete bridal styling — crafted for your most special day.
+            </p>
+            <div class="hr hr3 flex flex-wrap gap-4 mb-12">
+                <a href="#contact" class="inline-flex items-center gap-3 bg-[#1a1a1a] text-[#faf8f5] px-8 py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#333] transition">
+                    Book Appointment <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="https://wa.me/918953229006" target="_blank" class="inline-flex items-center gap-3 border-2 border-[#1a1a1a] text-[#1a1a1a] px-8 py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#1a1a1a] hover:text-white transition">
+                    WhatsApp
+                </a>
+            </div>
+            <div class="hr hr4 flex flex-wrap gap-x-8 gap-y-2 text-[#999] text-sm">
+                <a href="tel:+919935860926" class="hover:text-[#1a1a1a] transition">9935860926</a>
+                <a href="https://wa.me/918953229006" class="hover:text-[#1a1a1a] transition">8953229006</a>
+                <a href="tel:+918604470748" class="hover:text-[#1a1a1a] transition">8604470748</a>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hr hr5 flex flex-col items-center gap-2">
+        <span class="text-[9px] text-[#999] tracking-[.3em] uppercase">Scroll</span>
+        <div class="w-px h-8 bg-[#ccc] relative overflow-hidden rounded-full"><div class="w-full h-3 bg-[#1a1a1a] rounded-full animate-bounce"></div></div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-[#1a1a1a] py-4 overflow-hidden">
+    <div class="mq flex whitespace-nowrap">
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Bridal Lehenga</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Professional Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Jewellery Rental</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Haldi Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Party Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Complete Styling</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Bridal Lehenga</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Professional Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Jewellery Rental</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Haldi Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Party Makeup</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+        <span class="text-[11px] text-white/25 tracking-[.3em] uppercase font-medium mx-8">Complete Styling</span><span class="text-[#b8860b]/40 mx-4">✦</span>
+    </div>
+</div>
+
+<!-- ===== WORK ===== -->
+<section id="work" class="py-28 sm:py-36 bg-[#faf8f5]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+            <div class="rv">
+                <div class="flex items-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Portfolio</span></div>
+                <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight leading-[.95]">Selected<br>Work</h2>
+            </div>
+            <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="rv text-[#666] hover:text-[#1a1a1a] text-[13px] font-medium flex items-center gap-2 tracking-wide transition">View all on Instagram <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            <div class="rv ihover rounded-2xl aspect-[3/4] cursor-pointer"><img src="image1.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="rv ihover rounded-2xl aspect-[3/4] cursor-pointer" style="transition-delay:.1s"><img src="image 2.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="rv ihover rounded-2xl aspect-[3/4] cursor-pointer hidden lg:block" style="transition-delay:.2s"><img src="image 3.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="rv ihover rounded-2xl aspect-[4/3] cursor-pointer lg:col-span-2"><img src="image 6.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="rv ihover rounded-2xl aspect-[4/3] cursor-pointer" style="transition-delay:.1s"><img src="image 5.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="rv ihover rounded-2xl aspect-[4/3] cursor-pointer" style="transition-delay:.15s"><img src="image 7.jpeg" alt="" class="w-full h-full object-cover rounded-2xl"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+<section class="py-28 sm:py-36 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="rv">
+                <div class="flex items-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Video</span></div>
+                <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight leading-[.95] mb-6">Watch Our<br><em class="text-[#b8860b]">Work</em> in Motion</h2>
+                <p class="text-[#666] text-base leading-relaxed font-light mb-8">See the transformation behind the scenes — from draping to final look, every detail matters.</p>
+                <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="inline-flex items-center gap-2 text-[#b8860b] text-[13px] font-medium tracking-wide hover:text-[#1a1a1a] transition">
+                    See more reels <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            <div class="rv" style="transition-delay:.15s">
+                <div class="relative rounded-3xl overflow-hidden aspect-video bg-[#1a1a1a]">
+                    <img src="image1.jpeg" alt="" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button class="play-btn w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl cursor-pointer">
+                            <i data-lucide="play" class="w-8 h-8 text-[#1a1a1a] ml-1"></i>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+                        <span class="text-white/70 text-xs font-medium tracking-wider">NEW LEHGA COLLECTION</span>
+                        <span class="text-white/50 text-xs">2:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="py-28 sm:py-36 bg-[#1a1a1a] text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-xl mb-16 rv">
+            <div class="flex items-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Services</span></div>
+            <h2 class="text-5xl sm:text-6xl fd font-medium tracking-tight leading-[.95]">What We<br>Offer</h2>
+        </div>
+        <div class="space-y-0">
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">01</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Bridal Lehenga</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">Designer bridal lehenga on rent — Red, Maroon, Pink & custom colors</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">02</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Complete Bridal Package</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">Lehenga + Makeup + Jewellery — everything in one package</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">03</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Bridal Makeup</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">HD Airbrush makeup — 12+ hours long-lasting finish</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">04</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Haldi Makeup</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">Waterproof natural glow for haldi ceremony</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">05</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Side Makeup</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">Elegant look for bride's sister, friends & family</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+            <div class="srow py-7 sm:py-9 flex items-center gap-6 sm:gap-10 cursor-pointer px-2 sm:px-4 rv"><span class="snum text-3xl sm:text-4xl fd text-white/20 w-20 sm:w-28 flex-shrink-0">06</span><h3 class="text-xl sm:text-2xl fd font-medium flex-1">Jewellery Rental</h3><p class="text-white/30 text-sm max-w-xs hidden lg:block">Premium bridal sets — Necklace, Earrings, Maang Tikka & more</p><i data-lucide="arrow-up-right" class="sarr w-5 h-5 text-[#b8860b] flex-shrink-0"></i></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" class="py-28 sm:py-36 bg-[#faf8f5]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-16 rv">
+            <div class="flex items-center justify-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Pricing</span><div class="ldraw h-px bg-[#b8860b]"></div></div>
+            <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight">Our Packages</h2>
+            <p class="text-[#999] text-base mt-4 max-w-lg mx-auto font-light">Transparent pricing, no hidden charges. Choose what suits you best.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Basic -->
+            <div class="rv price-card bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df]">
+                <div class="text-[10px] font-bold text-[#999] tracking-[.25em] uppercase mb-3">Basic</div>
+                <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-2">Makeup Only</h3>
+                <div class="flex items-baseline gap-1 mb-6">
+                    <span class="text-4xl fd font-bold text-[#1a1a1a]">₹5,000</span>
+                    <span class="text-sm text-[#999]">onwards</span>
+                </div>
+                <div class="ldraw h-px bg-[#e8e4df] mb-6"></div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Party / Event Makeup</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Haldi / Mehendi Makeup</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>4-5 Hours Long-lasting</li>
+                    <li class="flex items-start gap-3 text-sm text-[#ccc]"><i data-lucide="minus" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>Lehenga Not Included</li>
+                    <li class="flex items-start gap-3 text-sm text-[#ccc]"><i data-lucide="minus" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>Jewellery Not Included</li>
+                </ul>
+                <a href="#contact" class="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#1a1a1a] hover:text-white transition">Book Now</a>
+            </div>
+
+            <!-- Featured -->
+            <div class="rv price-card featured rounded-3xl p-8 sm:p-10 border-2 border-[#b8860b] relative" style="transition-delay:.1s">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#b8860b] text-white text-[9px] font-bold tracking-[.2em] uppercase px-5 py-1.5 rounded-full">Most Popular</div>
+                <div class="price-label text-[10px] font-bold tracking-[.25em] uppercase mb-3">Premium</div>
+                <h3 class="text-2xl fd font-semibold mb-2">Bridal Package</h3>
+                <div class="flex items-baseline gap-1 mb-6">
+                    <span class="text-4xl fd font-bold">₹15,000</span>
+                    <span class="text-sm text-white/50">onwards</span>
+                </div>
+                <div class="ldraw h-px bg-white/10 mb-6" style="background:white/10"></div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>HD Airbrush Bridal Makeup</li>
+                    <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Designer Lehenga on Rent</li>
+                    <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Complete Jewellery Set</li>
+                    <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>12+ Hours Long-lasting</li>
+                    <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Touch-up Kit Included</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-[#b8860b] text-white py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#a07608] transition">Book Now</a>
+            </div>
+
+            <!-- Royal -->
+            <div class="rv price-card bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df]" style="transition-delay:.2s">
+                <div class="text-[10px] font-bold text-[#999] tracking-[.25em] uppercase mb-3">Royal</div>
+                <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-2">Complete Wedding</h3>
+                <div class="flex items-baseline gap-1 mb-6">
+                    <span class="text-4xl fd font-bold text-[#1a1a1a]">₹35,000</span>
+                    <span class="text-sm text-[#999]">onwards</span>
+                </div>
+                <div class="ldraw h-px bg-[#e8e4df] mb-6"></div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Everything in Premium</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Haldi + Mehendi + Sangeet</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Side Makeup (3-4 People)</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Multiple Outfit Changes</li>
+                    <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Dedicated Stylist on Venue</li>
+                </ul>
+                <a href="#contact" class="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#1a1a1a] hover:text-white transition">Book Now</a>
+            </div>
+        </div>
+
+        <p class="text-center text-[#999] text-xs mt-10 rv">* Prices are indicative. Final pricing depends on selection. Contact us for exact quote.</p>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="py-28 sm:py-36 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid lg:grid-cols-5 gap-16 lg:gap-24 items-center">
+            <div class="lg:col-span-2 rv">
+                <div class="relative">
+                    <div class="ihover rounded-3xl aspect-[3/4]"><img src="image 8.jpeg" alt="" class="w-full h-full object-cover rounded-3xl"></div>
+                    <div class="absolute -bottom-6 -right-6 bg-[#faf8f5] rounded-2xl p-6 shadow-xl shadow-black/5 border border-[#e8e4df]">
+                        <div class="text-4xl fd font-bold text-[#1a1a1a]">5+</div>
+                        <div class="text-[10px] text-[#999] font-medium tracking-[.15em] uppercase mt-1">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-3 rv" style="transition-delay:.15s">
+                <div class="flex items-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Our Story</span></div>
+                <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight leading-[.95] mb-8">Where Dreams<br>Meet <em class="text-[#b8860b]">Elegance</em></h2>
+                <div class="ldraw h-px bg-[#e8e4df] mb-8"></div>
+                <p class="text-[#666] text-lg leading-relaxed mb-6 font-light">New Lehga Collection is a premium bridal studio offering designer lehenga, professional makeup and complete styling services — all under one roof.</p>
+                <p class="text-[#999] text-base leading-relaxed mb-10">With over 5 years of experience and 500+ happy brides, we understand that every bride deserves to feel extraordinary on her special day.</p>
+                <div class="grid grid-cols-3 gap-8 mb-10">
+                    <div><div class="text-3xl fd font-bold text-[#1a1a1a]">500+</div><div class="text-[11px] text-[#999] mt-1 font-medium tracking-wider uppercase">Brides</div></div>
+                    <div><div class="text-3xl fd font-bold text-[#1a1a1a]">1K+</div><div class="text-[11px] text-[#999] mt-1 font-medium tracking-wider uppercase">Followers</div></div>
+                    <div><div class="text-3xl fd font-bold text-[#1a1a1a]">100%</div><div class="text-[11px] text-[#999] mt-1 font-medium tracking-wider uppercase">Satisfaction</div></div>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-3 bg-[#1a1a1a] text-[#faf8f5] px-8 py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#333] transition">Get In Touch <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="py-28 sm:py-36 bg-[#f0ebe3]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-16 rv">
+            <div class="flex items-center justify-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Testimonials</span><div class="ldraw h-px bg-[#b8860b]"></div></div>
+            <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight">Kind Words</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div class="rv">
+                <div class="text-6xl fd text-[#e8e4df] leading-none mb-2">"</div>
+                <p class="text-[#555] text-base leading-relaxed mb-8 -mt-4 font-light italic">The lehenga was absolutely stunning and the makeup was flawless. Best decision for my wedding.</p>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#b8860b] fd font-bold">A</div><div><div class="text-sm font-medium text-[#1a1a1a]">Anjali</div><div class="text-[11px] text-[#999]">Bridal Package</div></div></div>
+            </div>
+            <div class="rv" style="transition-delay:.1s">
+                <div class="text-6xl fd text-[#e8e4df] leading-none mb-2">"</div>
+                <p class="text-[#555] text-base leading-relaxed mb-8 -mt-4 font-light italic">Makeup stayed fresh for 12+ hours. Haldi and wedding both looked amazing. Truly professional work.</p>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#b8860b] fd font-bold">S</div><div><div class="text-sm font-medium text-[#1a1a1a]">Sneha</div><div class="text-[11px] text-[#999]">Bridal + Haldi</div></div></div>
+            </div>
+            <div class="rv" style="transition-delay:.2s">
+                <div class="text-6xl fd text-[#e8e4df] leading-none mb-2">"</div>
+                <p class="text-[#555] text-base leading-relaxed mb-8 -mt-4 font-light italic">Premium quality jewellery at rental price. Complete package was so convenient. Highly recommended!</p>
+                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#b8860b] fd font-bold">M</div><div><div class="text-sm font-medium text-[#1a1a1a]">Meena</div><div class="text-[11px] text-[#999]">Lehenga + Jewellery</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="py-28 sm:py-36 bg-[#faf8f5]">
+    <div class="max-w-3xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-16 rv">
+            <div class="flex items-center justify-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">FAQ</span><div class="ldraw h-px bg-[#b8860b]"></div></div>
+            <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight">Common Questions</h2>
+        </div>
+
+        <div class="space-y-0">
+            <div class="faq-item rv border-b border-[#e8e4df]">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">How many days in advance should I book?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">We recommend booking at least 15-20 days before your event to ensure availability and proper preparation. For wedding season (Nov-Feb), book 1 month in advance.</p></div>
+            </div>
+            <div class="faq-item rv border-b border-[#e8e4df]">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">Is there a trial session before the final day?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">Yes, we offer a complimentary trial session where you can see the lehenga, discuss makeup looks and try jewellery. This helps us understand your preferences perfectly.</p></div>
+            </div>
+            <div class="faq-item rv border-b border-[#e8e4df]">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">What is included in the rental package?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">Rental package includes lehenga, matching dupatta, petticoat, complete jewellery set (necklace, earrings, maang tikka, bangles). Alterations and dry cleaning are handled by us.</p></div>
+            </div>
+            <div class="faq-item rv border-b border-[#e8e4df]">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">Do you provide on-venue service?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">Yes, our team comes to your venue for makeup and draping. For the Royal package, a dedicated stylist stays with you throughout the event for touch-ups.</p></div>
+            </div>
+            <div class="faq-item rv border-b border-[#e8e4df]">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">What products do you use for makeup?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">We use premium brands like MAC, Charlotte Tilbury, NARS and Kryolan. All products are HD-friendly, waterproof and suitable for all skin types.</p></div>
+            </div>
+            <div class="faq-item rv">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
+                    <span class="text-base sm:text-lg fd font-medium text-[#1a1a1a] pr-6">Is there a security deposit for rental items?</span>
+                    <i data-lucide="plus" class="faq-icon w-5 h-5 text-[#b8860b] flex-shrink-0"></i>
+                </button>
+                <div class="faq-answer"><p class="text-[#666] text-sm leading-relaxed pb-6 font-light">Yes, a refundable security deposit is taken at the time of handover. It is fully refunded when items are returned in original condition within the agreed timeframe.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="py-28 sm:py-36 bg-[#f0ebe3]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+            <div class="rv">
+                <div class="flex items-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">Contact</span></div>
+                <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight leading-[.95] mb-6">Let's Create<br>Something <em class="text-[#b8860b]">Beautiful</em></h2>
+                <p class="text-[#666] text-base leading-relaxed mb-14 font-light">Reach out to book your appointment or inquire about our services.</p>
+                <div class="space-y-5">
+                    <a href="tel:+919935860926" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="phone" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Phone</div><div class="text-base font-semibold text-[#1a1a1a]">9935860926</div></div></a>
+                    <a href="https://wa.me/918953229006" target="_blank" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="message-circle" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">WhatsApp</div><div class="text-base font-semibold text-[#1a1a1a]">8953229006</div></div></a>
+                    <a href="tel:+918604470748" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="phone-call" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Alternate</div><div class="text-base font-semibold text-[#1a1a1a]">8604470748</div></div></a>
+                    <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="instagram" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Instagram</div><div class="text-base font-semibold text-[#1a1a1a]">@new_lehga_collcetion</div></div></a>
+                </div>
+            </div>
+            <div class="rv" style="transition-delay:.15s">
+                <form id="cf" onsubmit="sf(event)" class="bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df] shadow-sm">
+                    <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-8">Book an Appointment</h3>
+                    <div class="space-y-6">
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Your Name *</label><input type="text" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter your name"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Phone Number *</label><input type="tel" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter mobile number"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Service *</label><select required class="finput w-full py-3 border-0 bg-transparent text-[#999] text-base focus:outline-none appearance-none cursor-pointer"><option value="">Select a service</option><option>Bridal Lehenga</option><option>Complete Bridal Package</option><option>Bridal Makeup</option><option>Haldi / Side Makeup</option><option>Jewellery Rental</option><option>Party Makeup</option><option>Royal Wedding Package</option></select></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Date *</label><input type="date" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Message</label><textarea rows="3" class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none resize-none placeholder:text-[#ccc]" placeholder="Any special requirements..."></textarea></div>
+                        <button type="submit" class="w-full bg-[#1a1a1a] text-[#faf8f5] py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#333] transition flex items-center justify-center gap-2 mt-2">Submit Request <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#1a1a1a] text-white pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="sm:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-3 mb-5"><div class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center"><span class="text-white font-bold text-xs fd">NL</span></div><div><div class="text-[14px] fd font-semibold">New Lehga Collection</div><div class="text-[9px] text-white/30 tracking-[.2em] uppercase">Premium Bridal Studio</div></div></div>
+                <p class="text-white/30 text-sm leading-relaxed mb-5">Designer lehenga, professional makeup & complete bridal styling — all under one roof.</p>
+                <div class="flex items-center gap-3">
+                    <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://wa.me/918953229006" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-green-400 hover:text-green-400 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                    <a href="tel:+919935860926" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                    <a href="https://maps.google.com/?q=New+Lehga+Collection" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="map-pin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold tracking-[.2em] uppercase text-white/40 mb-6">Services</h4>
+                <ul class="space-y-3"><li><a href="#services" class="text-white/40 text-sm hover:text-white transition">Bridal Lehenga</a></li><li><a href="#services" class="text-white/40 text-sm hover:text-white transition">Bridal Makeup</a></li><li><a href="#services" class="text-white/40 text-sm hover:text-white transition">Haldi & Side</a></li><li><a href="#services" class="text-white/40 text-sm hover:text-white transition">Complete Package</a></li><li><a href="#services" class="text-white/40 text-sm hover:text-white transition">Jewellery Rental</a></li></ul>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold tracking-[.2em] uppercase text-white/40 mb-6">Quick Links</h4>
+                <ul class="space-y-3"><li><a href="#home" class="text-white/40 text-sm hover:text-white transition">Home</a></li><li><a href="#work" class="text-white/40 text-sm hover:text-white transition">Portfolio</a></li><li><a href="#pricing" class="text-white/40 text-sm hover:text-white transition">Pricing</a></li><li><a href="#about" class="text-white/40 text-sm hover:text-white transition">About</a></li><li><a href="#faq" class="text-white/40 text-sm hover:text-white transition">FAQ</a></li><li><a href="#contact" class="text-white/40 text-sm hover:text-white transition">Contact</a></li></ul>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold tracking-[.2em] uppercase text-white/40 mb-6">Contact</h4>
+                <ul class="space-y-3 text-white/30 text-sm">
+                    <li><a href="tel:+919935860926" class="hover:text-white transition">9935860926</a></li>
+                    <li><a href="https://wa.me/918953229006" class="hover:text-white transition">8953229006</a></li>
+                    <li><a href="tel:+918604470748" class="hover:text-white transition">8604470748</a></li>
+                    <li class="text-white/20 pt-2">Mon — Sat · 10AM — 8PM</li>
+                    <li class="text-white/20">Sunday · By Appointment</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-white/20 text-xs">© 2024 New Lehga Collection. All rights reserved.</p>
+            <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="text-white/20 text-xs hover:text-white/50 transition">@new_lehga_collcetion</a>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/918953229006" target="_blank" class="fixed bottom-6 right-6 z-[400] w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center shadow-xl hover:bg-[#333] hover:scale-110 transition-all border border-white/10">
+    <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+</a>
+
+<script>
+lucide.createIcons();
+
+const nv=document.getElementById('nv');
+addEventListener('scroll',()=>{
+    nv.classList.toggle('bg-[#faf8f5]/90',scrollY>60);
+    nv.classList.toggle('backdrop-blur-xl',scrollY>60);
+    nv.classList.toggle('shadow-sm',scrollY>60);
+});
+
+function mm(){document.getElementById('mp').classList.toggle('show');document.body.style.overflow=document.getElementById('mp').classList.contains('show')?'hidden':''}
+
+function toast(m){const t=document.createElement('div');t.className='tst bg-[#1a1a1a] text-white px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2.5 text-sm font-medium pointer-events-auto';t.innerHTML=`<svg width="16" height="16" fill="none" stroke="#b8860b" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>${m}`;document.getElementById('tb').appendChild(t);setTimeout(()=>t.remove(),3200)}
+
+function sf(e){e.preventDefault();toast('Submitted! We will contact you soon.');e.target.reset()}
+
+function toggleFaq(btn){
+    const item=btn.closest('.faq-item');
+    const answer=item.querySelector('.faq-answer');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-answer').classList.remove('open')});
+    if(!wasOpen){item.classList.add('open');answer.classList.add('open')}
+}
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv,.ldraw').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();scrollTo({top:t.offsetTop-80,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
