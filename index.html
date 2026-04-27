@@ -44,26 +44,23 @@
         .finput{border-bottom:1px solid #e8e4df;transition:border-color .3s}
         .finput:focus{border-bottom-color:#1a1a1a}
         .grain::after{content:'';position:fixed;inset:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-        /* Pricing */
         .price-card{transition:all .5s cubic-bezier(.16,1,.3,1)}
         .price-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -15px rgba(0,0,0,.08)}
         .price-card.featured{border-color:#b8860b;background:#1a1a1a;color:white}
         .price-card.featured .price-label{color:#b8860b}
-
-        /* FAQ */
         .faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),padding .3s}
         .faq-answer.open{max-height:300px}
         .faq-icon{transition:transform .3s}
         .faq-item.open .faq-icon{transform:rotate(45deg)}
-
-        /* Video play btn */
         .play-btn{transition:all .4s}
         .play-btn:hover{transform:scale(1.1);box-shadow:0 0 0 20px rgba(184,134,11,.15)}
-
-        /* Map */
         .map-wrap{transition:all .5s}
         .map-wrap:hover{box-shadow:0 20px 60px -15px rgba(0,0,0,.15)}
+
+        /* Loading spinner on button */
+        .btn-loading{position:relative;pointer-events:none}
+        .btn-loading::after{content:'';position:absolute;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .6s linear infinite;right:20px}
+        @keyframes spin{to{transform:rotate(360deg)}}
     </style>
 </head>
 <body class="grain">
@@ -96,7 +93,7 @@
     </div>
 </nav>
 
-<!-- MOBILE -->
+<!-- MOBILE MENU -->
 <div id="mp" class="mm fixed inset-0 z-[550] bg-[#faf8f5] flex flex-col">
     <div class="flex justify-end p-6"><button onclick="mm()" class="text-[#1a1a1a]"><i data-lucide="x" class="w-6 h-6"></i></button></div>
     <div class="flex-1 flex flex-col items-center justify-center gap-7 -mt-10">
@@ -114,7 +111,7 @@
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-[#f0ebe3]">
     <div class="absolute inset-0 flex">
         <div class="w-1/2 himg ihover"><img src="https://picsum.photos/seed/nlc-hero-left-pro/1000/1400.jpg" alt="" class="w-full h-full object-cover"></div>
-        <div class="w-1/2 himg ihover hidden sm:block" style="animation-delay:.5s"><img src="https://picsum.photos/seed/nlc-hero-right-pro/1000/1400.jpg" alt="" class="w-full h-full object-cover"></div>
+        <div class="w-1/2 himg ihover hidden sm:block" style="animation-delay:.5s"><img src="image1.jpeg" alt="" class="w-full h-full object-cover"></div>
     </div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#faf8f5]/95 via-[#faf8f5]/70 to-transparent sm:to-[#faf8f5]/30"></div>
     <div class="relative max-w-7xl mx-auto px-6 lg:px-12 w-full pt-28 pb-20">
@@ -138,7 +135,6 @@
                 </a>
             </div>
             <div class="hr hr4 flex flex-wrap gap-x-8 gap-y-2 text-[#999] text-sm">
-                <a href="tel:+919935860926" class="hover:text-[#1a1a1a] transition">9935860926</a>
                 <a href="https://wa.me/918953229006" class="hover:text-[#1a1a1a] transition">8953229006</a>
                 <a href="tel:+918604470748" class="hover:text-[#1a1a1a] transition">8604470748</a>
             </div>
@@ -247,16 +243,11 @@
             <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight">Our Packages</h2>
             <p class="text-[#999] text-base mt-4 max-w-lg mx-auto font-light">Transparent pricing, no hidden charges. Choose what suits you best.</p>
         </div>
-
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <!-- Basic -->
             <div class="rv price-card bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df]">
                 <div class="text-[10px] font-bold text-[#999] tracking-[.25em] uppercase mb-3">Basic</div>
                 <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-2">Makeup Only</h3>
-                <div class="flex items-baseline gap-1 mb-6">
-                    <span class="text-4xl fd font-bold text-[#1a1a1a]">₹5,000</span>
-                    <span class="text-sm text-[#999]">onwards</span>
-                </div>
+                <div class="flex items-baseline gap-1 mb-6"><span class="text-4xl fd font-bold text-[#1a1a1a]">₹5,000</span><span class="text-sm text-[#999]">onwards</span></div>
                 <div class="ldraw h-px bg-[#e8e4df] mb-6"></div>
                 <ul class="space-y-3 mb-8">
                     <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Party / Event Makeup</li>
@@ -267,17 +258,12 @@
                 </ul>
                 <a href="#contact" class="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#1a1a1a] hover:text-white transition">Book Now</a>
             </div>
-
-            <!-- Featured -->
             <div class="rv price-card featured rounded-3xl p-8 sm:p-10 border-2 border-[#b8860b] relative" style="transition-delay:.1s">
                 <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#b8860b] text-white text-[9px] font-bold tracking-[.2em] uppercase px-5 py-1.5 rounded-full">Most Popular</div>
                 <div class="price-label text-[10px] font-bold tracking-[.25em] uppercase mb-3">Premium</div>
                 <h3 class="text-2xl fd font-semibold mb-2">Bridal Package</h3>
-                <div class="flex items-baseline gap-1 mb-6">
-                    <span class="text-4xl fd font-bold">₹15,000</span>
-                    <span class="text-sm text-white/50">onwards</span>
-                </div>
-                <div class="ldraw h-px bg-white/10 mb-6" style="background:white/10"></div>
+                <div class="flex items-baseline gap-1 mb-6"><span class="text-4xl fd font-bold">₹15,000</span><span class="text-sm text-white/50">onwards</span></div>
+                <div class="h-px bg-white/10 mb-6"></div>
                 <ul class="space-y-3 mb-8">
                     <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>HD Airbrush Bridal Makeup</li>
                     <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Designer Lehenga on Rent</li>
@@ -287,15 +273,10 @@
                 </ul>
                 <a href="#contact" class="block text-center bg-[#b8860b] text-white py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#a07608] transition">Book Now</a>
             </div>
-
-            <!-- Royal -->
             <div class="rv price-card bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df]" style="transition-delay:.2s">
                 <div class="text-[10px] font-bold text-[#999] tracking-[.25em] uppercase mb-3">Royal</div>
                 <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-2">Complete Wedding</h3>
-                <div class="flex items-baseline gap-1 mb-6">
-                    <span class="text-4xl fd font-bold text-[#1a1a1a]">₹35,000</span>
-                    <span class="text-sm text-[#999]">onwards</span>
-                </div>
+                <div class="flex items-baseline gap-1 mb-6"><span class="text-4xl fd font-bold text-[#1a1a1a]">₹35,000</span><span class="text-sm text-[#999]">onwards</span></div>
                 <div class="ldraw h-px bg-[#e8e4df] mb-6"></div>
                 <ul class="space-y-3 mb-8">
                     <li class="flex items-start gap-3 text-sm text-[#666]"><i data-lucide="check" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>Everything in Premium</li>
@@ -307,7 +288,6 @@
                 <a href="#contact" class="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-medium text-[12px] tracking-wider uppercase hover:bg-[#1a1a1a] hover:text-white transition">Book Now</a>
             </div>
         </div>
-
         <p class="text-center text-[#999] text-xs mt-10 rv">* Prices are indicative. Final pricing depends on selection. Contact us for exact quote.</p>
     </div>
 </section>
@@ -376,7 +356,6 @@
             <div class="flex items-center justify-center gap-4 mb-5"><div class="ldraw h-px bg-[#b8860b]"></div><span class="text-[10px] font-semibold text-[#b8860b] tracking-[.3em] uppercase">FAQ</span><div class="ldraw h-px bg-[#b8860b]"></div></div>
             <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight">Common Questions</h2>
         </div>
-
         <div class="space-y-0">
             <div class="faq-item rv border-b border-[#e8e4df]">
                 <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between py-6 text-left">
@@ -423,6 +402,7 @@
         </div>
     </div>
 </section>
+
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="py-28 sm:py-36 bg-[#f0ebe3]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -432,7 +412,6 @@
                 <h2 class="text-5xl sm:text-6xl fd font-medium text-[#1a1a1a] tracking-tight leading-[.95] mb-6">Let's Create<br>Something <em class="text-[#b8860b]">Beautiful</em></h2>
                 <p class="text-[#666] text-base leading-relaxed mb-14 font-light">Reach out to book your appointment or inquire about our services.</p>
                 <div class="space-y-5">
-                    <a href="tel:+919935860926" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="phone" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Phone</div><div class="text-base font-semibold text-[#1a1a1a]">9935860926</div></div></a>
                     <a href="https://wa.me/918953229006" target="_blank" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="message-circle" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">WhatsApp</div><div class="text-base font-semibold text-[#1a1a1a]">8953229006</div></div></a>
                     <a href="tel:+918604470748" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="phone-call" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Alternate</div><div class="text-base font-semibold text-[#1a1a1a]">8604470748</div></div></a>
                     <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="ncard flex items-center gap-5 bg-white border border-[#e8e4df] rounded-2xl p-5"><div class="nicon w-12 h-12 rounded-full bg-[#f0ebe3] flex items-center justify-center flex-shrink-0 transition-all"><i data-lucide="instagram" class="w-5 h-5 text-[#1a1a1a]"></i></div><div><div class="text-[10px] text-[#999] font-semibold tracking-[.15em] uppercase mb-0.5">Instagram</div><div class="text-base font-semibold text-[#1a1a1a]">@new_lehga_collcetion</div></div></a>
@@ -440,14 +419,19 @@
             </div>
             <div class="rv" style="transition-delay:.15s">
                 <form id="cf" onsubmit="sf(event)" class="bg-white rounded-3xl p-8 sm:p-10 border border-[#e8e4df] shadow-sm">
-                    <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-8">Book an Appointment</h3>
+                    <h3 class="text-2xl fd font-semibold text-[#1a1a1a] mb-3">Book an Appointment</h3>
+                    <!-- Note added here -->
+                    <div class="flex items-start gap-2.5 bg-[#b8860b]/5 border border-[#b8860b]/20 rounded-xl p-4 mb-8">
+                        <i data-lucide="info" class="w-4 h-4 text-[#b8860b] flex-shrink-0 mt-0.5"></i>
+                        <p class="text-[#b8860b] text-sm font-medium leading-relaxed">Book an Appointment karne ke baad iss no. <a href="https://wa.me/918953229006" class="underline hover:text-[#a07608] transition">+91 89532 29006</a> pr message kare</p>
+                    </div>
                     <div class="space-y-6">
-                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Your Name *</label><input type="text" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter your name"></div>
-                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Phone Number *</label><input type="tel" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter mobile number"></div>
-                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Service *</label><select required class="finput w-full py-3 border-0 bg-transparent text-[#999] text-base focus:outline-none appearance-none cursor-pointer"><option value="">Select a service</option><option>Bridal Lehenga</option><option>Complete Bridal Package</option><option>Bridal Makeup</option><option>Haldi / Side Makeup</option><option>Jewellery Rental</option><option>Party Makeup</option><option>Royal Wedding Package</option></select></div>
-                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Date *</label><input type="date" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none"></div>
-                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Message</label><textarea rows="3" class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none resize-none placeholder:text-[#ccc]" placeholder="Any special requirements..."></textarea></div>
-                        <button type="submit" class="w-full bg-[#1a1a1a] text-[#faf8f5] py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#333] transition flex items-center justify-center gap-2 mt-2">Submit Request <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Your Name *</label><input id="fname" type="text" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter your name"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Phone Number *</label><input id="fphone" type="tel" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none placeholder:text-[#ccc]" placeholder="Enter mobile number"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Service *</label><select id="fservice" required class="finput w-full py-3 border-0 bg-transparent text-[#999] text-base focus:outline-none appearance-none cursor-pointer"><option value="">Select a service</option><option>Bridal Lehenga</option><option>Complete Bridal Package</option><option>Bridal Makeup</option><option>Haldi / Side Makeup</option><option>Jewellery Rental</option><option>Party Makeup</option><option>Royal Wedding Package</option></select></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Date *</label><input id="fdate" type="date" required class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none"></div>
+                        <div><label class="block text-[10px] text-[#999] font-semibold tracking-[.2em] uppercase mb-2">Message</label><textarea id="fmsg" rows="3" class="finput w-full py-3 border-0 bg-transparent text-[#1a1a1a] text-base focus:outline-none resize-none placeholder:text-[#ccc]" placeholder="Any special requirements..."></textarea></div>
+                        <button id="fbtn" type="submit" class="w-full bg-[#1a1a1a] text-[#faf8f5] py-4 rounded-full font-medium text-[13px] tracking-wider uppercase hover:bg-[#333] transition flex items-center justify-center gap-2 mt-2">Submit Request <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
                     </div>
                 </form>
             </div>
@@ -465,7 +449,6 @@
                 <div class="flex items-center gap-3">
                     <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
                     <a href="https://wa.me/918953229006" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-green-400 hover:text-green-400 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                    <a href="tel:+919935860926" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
                     <a href="https://maps.google.com/?q=New+Lehga+Collection" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#b8860b] hover:text-[#b8860b] transition"><i data-lucide="map-pin" class="w-4 h-4"></i></a>
                 </div>
             </div>
@@ -492,10 +475,14 @@
             <p class="text-white/20 text-xs">© 2024 New Lehga Collection. All rights reserved.</p>
             <a href="https://instagram.com/new_lehga_collcetion" target="_blank" class="text-white/20 text-xs hover:text-white/50 transition">@new_lehga_collcetion</a>
         </div>
+        <!-- Website Made By Credit -->
+        <div class="mt-8 pt-6 border-t border-white/[.04] text-center">
+            <p class="text-white/15 text-[11px] tracking-wider">Website Made by <span class="text-white/30 font-medium">Vaishnavi Kharya</span></p>
+        </div>
     </div>
 </footer>
 
-<!-- WhatsApp -->
+<!-- WhatsApp FAB -->
 <a href="https://wa.me/918953229006" target="_blank" class="fixed bottom-6 right-6 z-[400] w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center shadow-xl hover:bg-[#333] hover:scale-110 transition-all border border-white/10">
     <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
 </a>
@@ -503,6 +490,7 @@
 <script>
 lucide.createIcons();
 
+// Nav scroll effect
 const nv=document.getElementById('nv');
 addEventListener('scroll',()=>{
     nv.classList.toggle('bg-[#faf8f5]/90',scrollY>60);
@@ -510,12 +498,62 @@ addEventListener('scroll',()=>{
     nv.classList.toggle('shadow-sm',scrollY>60);
 });
 
+// Mobile menu
 function mm(){document.getElementById('mp').classList.toggle('show');document.body.style.overflow=document.getElementById('mp').classList.contains('show')?'hidden':''}
 
-function toast(m){const t=document.createElement('div');t.className='tst bg-[#1a1a1a] text-white px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2.5 text-sm font-medium pointer-events-auto';t.innerHTML=`<svg width="16" height="16" fill="none" stroke="#b8860b" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>${m}`;document.getElementById('tb').appendChild(t);setTimeout(()=>t.remove(),3200)}
+// Toast notification
+function toast(m){
+    const t=document.createElement('div');
+    t.className='tst bg-[#1a1a1a] text-white px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2.5 text-sm font-medium pointer-events-auto max-w-sm text-center';
+    t.innerHTML=`<svg width="16" height="16" fill="none" stroke="#b8860b" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>${m}`;
+    document.getElementById('tb').appendChild(t);
+    setTimeout(()=>t.remove(),3200);
+}
 
-function sf(e){e.preventDefault();toast('Submitted! We will contact you soon.');e.target.reset()}
+// ★★★ MAIN FORM SUBMIT — WhatsApp Integration ★★★
+function sf(e){
+    e.preventDefault();
 
+    const btn=document.getElementById('fbtn');
+    btn.classList.add('btn-loading');
+    btn.innerHTML='Sending...';
+
+    // Get all form values
+    const name=document.getElementById('fname').value.trim();
+    const phone=document.getElementById('fphone').value.trim();
+    const service=document.getElementById('fservice').value;
+    const date=document.getElementById('fdate').value;
+    const msg=document.getElementById('fmsg').value.trim();
+
+    // Format date nicely
+    const dateObj=new Date(date);
+    const formattedDate=dateObj.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+
+    // Build WhatsApp message
+    let waMsg=`🔔 *NEW BOOKING REQUEST*\n\n`;
+    waMsg+=`👤 *Name:* ${name}\n`;
+    waMsg+=`📱 *Phone:* ${phone}\n`;
+    waMsg+=`💄 *Service:* ${service}\n`;
+    waMsg+=`📅 *Date:* ${formattedDate}\n`;
+    if(msg) waMsg+=`💬 *Message:* ${msg}\n`;
+    waMsg+=`\n📋 _Please confirm this booking._`;
+
+    // Encode and open WhatsApp
+    const waUrl=`https://wa.me/918953229006?text=${encodeURIComponent(waMsg)}`;
+
+    // Show success toast
+    toast('Opening WhatsApp to confirm booking...');
+
+    // Small delay for UX feel
+    setTimeout(()=>{
+        window.open(waUrl,'_blank');
+        btn.classList.remove('btn-loading');
+        btn.innerHTML='Submit Request <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        e.target.reset();
+    },1200);
+}
+
+// FAQ toggle
 function toggleFaq(btn){
     const item=btn.closest('.faq-item');
     const answer=item.querySelector('.faq-answer');
@@ -524,9 +562,11 @@ function toggleFaq(btn){
     if(!wasOpen){item.classList.add('open');answer.classList.add('open')}
 }
 
+// Reveal on scroll
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.rv,.ldraw').forEach(el=>obs.observe(el));
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();scrollTo({top:t.offsetTop-80,behavior:'smooth'})}})});
 </script>
 </body>
